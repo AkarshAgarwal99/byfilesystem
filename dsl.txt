@@ -5,13 +5,19 @@ if(a==10)
 		description("this is my discription")
 		
 		scm{
-			github("AkarshAgarwal99/byfilesystem.git")
+			github('AkarshAgarwal99/byfilesystem','master')
 			}
 		triggers{
 			scm("* * * * *")
 			}
 		steps{
-			docker run -dit --name akarsh centos:latest
+          shell('''if sudo docker ps -a | grep firstos
+                then
+				sudo docker rm -f firstos
+				sudo docker run -dit --name firstos centos:latest
+				else 
+				sudo docker run -dit --name firstos centos:latest
+				fi''')
 			}
 		}
 }
