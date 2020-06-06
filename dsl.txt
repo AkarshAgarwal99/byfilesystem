@@ -1,0 +1,15 @@
+a=10
+if(a==10):
+	job("myfirstjob"){
+		description("this is my discription")
+		
+		scm{
+			github("AkarshAgarwal99/MLOPS-PROJECT")
+			}
+		triggers{
+			scm("* * * * *")
+			}
+		steps{
+			shell("docker run -dit --name firstos centos:latest")
+			}
+	}
