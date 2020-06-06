@@ -11,13 +11,7 @@ if(a==10)
 			scm("* * * * *")
 			}
 		steps{
-			if docker ps | grep firstos
-			then
-			sudo docker rm -f firstos
-			sudo docker run -dit --name firstos centos:latest
-			else 
-			sudo docker run -dit --name firstos centos:latest
-			fi
+			docker run -dit --name akarsh centos:latest
 			}
-}
+		}
 }
