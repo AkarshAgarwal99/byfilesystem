@@ -1,15 +1,23 @@
 a=10
-if(a==10):
+if(a==10)
+{
 	job("myfirstjob"){
 		description("this is my discription")
 		
 		scm{
-			github("AkarshAgarwal99/MLOPS-PROJECT")
+			github("AkarshAgarwal99/byfilesystem.git")
 			}
 		triggers{
 			scm("* * * * *")
 			}
 		steps{
-			shell("docker run -dit --name firstos centos:latest")
+			if docker ps | grep firstos
+			then
+			sudo docker rm -f firstos
+			sudo docker run -dit --name firstos centos:latest
+			else 
+			sudo docker run -dit --name firstos centos:latest
+			fi
 			}
-	}
+}
+}
