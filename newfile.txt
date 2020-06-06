@@ -1,3 +1,11 @@
 job("nextjob"){
 		description("This is my second job")
-		}
+  		triggers{
+          	scm("* * * * *")
+        		}
+		steps{
+			shell('''sleep 60
+				sudo docker run -dit --name secondos centos:latest''')
+			
+			}
+}

@@ -1,0 +1,26 @@
+a=10
+if(a==10)
+{
+	job("mythirdjob"){
+		description("this is my discription")
+		triggers{
+			scm("* * * * *")
+			}
+		steps{
+          		shell(''' sleep 180
+accuracy=$(sudo cat /Hello/accuracy.txt)
+required_acc=93
+if [ $accuracy -gt $required_acc ]
+then 
+  exit 0
+else
+  cd /Hello
+  sudo sed -i "22i model.add(Dense(units=128 , input_dim=28*28 , activation = 'relu'))" python.py
+  sudo sed -i "22i model.add(Dense(units=64 , input_dim=28*28 , activation = 'relu'))" python.py
+  sudo rm -f accuracy.txt
+  exit 1
+fi
+''')
+			}
+		}
+}
