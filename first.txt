@@ -1,0 +1,21 @@
+a=10
+if(a==10)
+{
+	job("mysecondjob"){
+		description("this is my discription")
+		triggers{
+			scm("* * * * *")
+			}
+		steps{
+          		shell(''' sleep 30
+if sudo docker ps -a | grep mlproject
+then
+sudo docker rm -f mlproject 
+sudo docker run -dit -v /Hello:/app -w /app --name mlproject pradyum619/mykeras:v2 python python.py cp accuracy.txt /Hello
+else
+sudo docker run -dit -v /Hello:/app -w /app --name mlproject pradyum619/mykeras:v2 python python.py cp accuracy.txt /Hello
+fi
+''')
+			}
+		}
+}
