@@ -1,5 +1,5 @@
-a=10
-if(a==10)
+a=11
+if(a==11)
 {
 	job("myfirstjob"){
 		description("this is my discription")
